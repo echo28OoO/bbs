@@ -2,11 +2,11 @@ server {
     listen 80;
 
     location /images {
-        alias /var/www/xueyu/images;
+        alias /var/www/bbs/images;
     }
 
     location /static {
-        alias /var/www/xueyu/static;
+        alias /var/www/bbs/static;
     }
 
     location / {

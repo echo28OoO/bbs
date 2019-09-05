@@ -1,19 +1,30 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-</head>
-<body>
-
+{% extends "topic/base.html" %}
+{% block title %}论坛主页{% endblock%}
+{% block main %}
 <p>发送邮件</p>
-<form method="post" action="{{ url_for('.add') }}">
-    <input type="text" name="content" placeholder="content">
-    <input type="text" name="title" placeholder="title">
-    <input type="text" name="receiver_id" placeholder="receiver_id">
-    <button type="submit">发送邮件</button>
-</form>
-
+    <form class="form-horizontal" method="post" action="{{ url_for('.add') }}">
+        <div class="control-group">
+            <label class="control-label">内容</label>
+            <div class="controls">
+                <input type="text" class="input-xlarge" name="content">
+            </div>
+        </div>
+        <div class="control-group">
+            <label class="control-label">标题</label>
+            <div class="controls">
+                <input type="text" class="input-xlarge" name="title">
+            </div>
+        </div>
+        <div class="control-group">
+            <label class="control-label">id</label>
+            <div class="controls">
+                <input type="text" class="input-xlarge" name="receiver_id">
+            </div>
+        </div>
+        <div class="form-actions">
+            <input type="submit" class="span-primary" value="发送邮件">
+        </div>
+    </form>
 <p>收到邮件</p>
 {% for r in received %}
     <div>
@@ -28,5 +39,4 @@
     </div>
 {% endfor %}
 
-</body>
-</html>
+{% endblock %}

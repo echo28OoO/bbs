@@ -38,15 +38,15 @@ mysql -u root -pxueyu0106 -e "ALTER USER 'root'@'localhost' IDENTIFIED WITH mysq
 rm -f /etc/nginx/sites-enabled/default
 rm -f /etc/nginx/sites-available/default
 # 不要再 sites-available 里面放任何东西
-cp /var/www/xueyu/xueyu.nginx /etc/nginx/sites-enabled/xueyu
-chmod -R o+rwx /var/www/xueyu
+cp /var/www/bbs/xueyu.nginx /etc/nginx/sites-enabled/xueyu
+chmod -R o+rwx /var/www/bbs
 
 cp xueyu.service /etc/systemd/system/xueyu.service
 cp xueyu-message-queue.service /etc/systemd/system/xueyu-message-queue.service
 
 
 # 初始化
-cd /var/www/xueyu
+cd /var/www/bbs
 python3 reset.py
 
 # 重启服务器

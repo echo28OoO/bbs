@@ -1,10 +1,10 @@
 [Unit]
-Description=xueyu demo
+Description=bbs demo
 After=network.target
 
 [Service]
 User=root
-WorkingDirectory=/var/www/xueyu
+WorkingDirectory=/var/www/bbs
 ExecStart=/usr/local/bin/gunicorn app_for_gunicorn:wsgi_app --bind 127.0.0.1:3000
 Restart=always
 

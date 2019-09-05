@@ -222,11 +222,11 @@ def reset():
     # cache.set(key, u.id)
     Messages.send(
         title='重置密码',
-        content='http://xueyusio.com/reset/view?token={}'.format(token),
+        content='http://localhost:3000/reset/view?token={}'.format(token),
         sender_id=u.id,
         receiver_id=u.id,
     )
-    return render_template('index.html')
+    return render_template('index_1.html')
 
 @main.route("/reset_view")
 def reset_view():
