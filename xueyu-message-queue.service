@@ -1,10 +1,10 @@
 [Unit]
-Description=xueyu message queue
+Description=bbs message queue
 After=network.target
 
 [Service]
 User=root
-WorkingDirectory=/var/www/xueyu
+WorkingDirectory=/var/www/bbs
 ExecStart=/usr/local/bin/celery -A tasks worker --loglevel=info
 Restart=always
 
