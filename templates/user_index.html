@@ -1,0 +1,128 @@
+{#<!DOCTYPE html>#}
+{#<html lang="en">#}
+{#<head>#}
+{#    <meta charset="UTF-8">#}
+{#    <title>bbs club</title>#}
+{#    <link rel="stylesheet" href="/static/css/user_index.min.css">#}
+{#</head>#}
+{#<body>#}
+{% extends "topic/base.html" %}
+{% block title %}论坛主页{% endblock%}
+{% block main %}
+<div id="main">
+    <div id="sidebar">
+        <div class="panel">
+            <div class="header">
+                <span class="col_fade">个人信息</span>
+            </div>
+            <div class="inner">
+                <div class="user_card">
+                    <div>
+                        <a class="user_avatar" href="/user/{{ user.username }}">
+                            <img src="{{ image }}">
+                        </a>
+                        <span class="user_name"><a class="dark" href="/user/{{ user.username }}">{{ user.username }}</a></span>
+                        <div class="board clearfix">
+                        </div>
+                        <div class="space clearfix"></div>
+                        <span class="signature">
+                        “
+
+                            这家伙很懒，什么个性签名都没有留下。
+
+                        ”
+                        </span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <div id="content">
+        <div class="panel">
+            <div class="header">
+                <ul class="breadcrumb">
+                    <li><a href="{{ url_for('topic.index') }}">主页</a><span class="divider">/</span></li>
+                </ul>
+            </div>
+            <div class="inner userinfo">
+                <div class="user_big_avatar">
+                    <img src="{{ image }}">
+                </div>
+
+                <a class="dark">{{ user.username }}</a>
+
+                <div class="user_profile">
+                    <ul class="unstyled">
+                        <li>
+                            <i class="fa fa-lg fa-fw fa-github"></i>
+                            <a class="dark" href="https://github.com/siO-X" target="_blank">
+                                @siO-X
+                            </a>
+                        </li>
+                    </ul>
+
+                </div>
+            </div>
+        </div>
+        <div class="panel">
+            <div class="header">
+                <span class="col_fade">最近创建的话题</span>
+            </div>
+            {% for t in topic %}
+                <div class="cell">
+                    <a class="user_avatar pull-left" href="{{ url_for('topic.index', id=user.id) }}">
+                        <img src="{{ image }}">
+                    </a>
+                    <span class="reply_count pull-left">
+                        <span class="count_of_replies" title="回复数">
+                            {{ t.replies() | count }}
+                        </span>
+                        <span class="count_seperator">/</span>
+                        <span class="count_of_visits" title="浏览数">
+                            {{ t.views }}
+                        </span>
+                    </span>
+                    <a class="last_time pull-right" href="{{ url_for('topic.detail', id=t.id) }}"></a>
+                    <div class="topic_title_wrapper">
+                        <a class="topic_title" href="{{ url_for('topic.detail', id=t.id) }}">
+                            {{ t.title }}
+                        </a>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+
+        <div class="panel">
+            <div class="header">
+                <span class="col_fade">最近参与的话题</span>
+            </div>
+            {% for t in zjcj %}
+                <div class="cell">
+                    <a class="user_avatar pull-left" href="{{ url_for('topic.index', id=user.id) }}">
+                        <img src="{{ image }}">
+                    </a>
+                    <span class="reply_count pull-left">
+                        <span class="count_of_replies" title="回复数">
+                            {{ t.replies() | count }}
+                        </span>
+                        <span class="count_seperator">/</span>
+                        <span class="count_of_visits" title="点击数">
+                            {{ t.views }}
+                        </span>
+                    </span>
+                    <a class="last_time pull-right" href="{{ url_for('topic.detail', id=t.id) }}"></a>
+                    <div class="topic_title_wrapper">
+                        <a class="topic_title" href="{{ url_for('topic.detail', id=t.id) }}">
+                            {{ t.title }}
+                        </a>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+</div>
+{% endblock %}
+{#</body>#}
+{#</html>#}

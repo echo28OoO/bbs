@@ -1,0 +1,40 @@
+{% extends "topic/base.html" %}
+{% block title %}论坛主页{% endblock%}
+{% block main %}
+<div id='content'>
+  <div class='panel'>
+    <div class='header'>
+      <ul class='breadcrumb'>
+        <li><a href='/'>主页</a><span class='divider'>/</span></li>
+        <li class='active'>找回密码</li>
+      </ul>
+    </div>
+        <div class="panel">
+            <div class="header">
+                <span class="col_fade">更改密码</span>
+            </div>
+            <div class="inner">
+                <form id="change_pass_form" class="form-horizontal" action="{{ url_for('.update') }}" method="post">
+                    <div class="control-group">
+                        <label class="control-label" for="new_pass">新密码</label>
+
+                        <div class="controls">
+                            <input class="input-xlarge" type="password" id="new_pass" name="new_pass" size="30">
+                        </div>
+                    </div>
+                    <input type="hidden" id="token" name="token" value="{{ token }}">
+                    <input type="hidden" name="id" value="{{ id }}">
+                    <div class="form-actions">
+                        <input type="submit" class="span-primary submit_btn" data-loading-text="更改中.." value="更改密码">
+                    </div>
+                </form>
+            </div>
+        </div>
+  </div>
+</div>
+
+
+<div style="display:none;">
+  <script src="//s95.cnzz.com/z_stat.php?id=1254020586&web_id=1254020586" language="JavaScript"></script>
+</div>
+{% endblock %}
